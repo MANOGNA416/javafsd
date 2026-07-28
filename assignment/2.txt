@@ -1,0 +1,83 @@
+mysql> use java;
+Database changed
+mysql> create table employee(
+    -> id int primary key,
+    -> department varchar(30),
+    -> salary int
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> INSERT INTO employee VALUES
+    -> (1,'HR',30000),
+    -> (2,'HR',45000),
+    -> (3,'HR',40000),
+    -> (4,'IT',50000),
+    -> (5,'IT',65000),
+    -> (6,'IT',60000),
+    -> (7,'Sales',25000),
+    -> (8,'Sales',35000),
+    -> (9,'Sales',32000);
+Query OK, 9 rows affected (0.01 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++----+------------+--------+
+| id | department | salary |
++----+------------+--------+
+|  1 | HR         |  30000 |
+|  2 | HR         |  45000 |
+|  3 | HR         |  40000 |
+|  4 | IT         |  50000 |
+|  5 | IT         |  65000 |
+|  6 | IT         |  60000 |
+|  7 | Sales      |  25000 |
+|  8 | Sales      |  35000 |
+|  9 | Sales      |  32000 |
++----+------------+--------+
+9 rows in set (0.00 sec)
+
+mysql> INSERT INTO employee VALUES
+    -> (10,'IT',50000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++----+------------+--------+
+| id | department | salary |
++----+------------+--------+
+|  1 | HR         |  30000 |
+|  2 | HR         |  45000 |
+|  3 | HR         |  40000 |
+|  4 | IT         |  50000 |
+|  5 | IT         |  65000 |
+|  6 | IT         |  60000 |
+|  7 | Sales      |  25000 |
+|  8 | Sales      |  35000 |
+|  9 | Sales      |  32000 |
+| 10 | IT         |  50000 |
++----+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select department , max(salary)
+    -> from employee group by department;
++------------+-------------+
+| department | max(salary) |
++------------+-------------+
+| HR         |       45000 |
+| IT         |       65000 |
+| Sales      |       35000 |
++------------+-------------+
+3 rows in set (0.04 sec)
+
+mysql> select department, max(salary) as highest_salary
+    -> from employee
+    -> group by department;
++------------+----------------+
+| department | highest_salary |
++------------+----------------+
+| HR         |          45000 |
+| IT         |          65000 |
+| Sales      |          35000 |
++------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql>
