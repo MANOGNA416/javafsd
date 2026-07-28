@@ -1,0 +1,99 @@
+mysql> create database java;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| java               |
+| mm                 |
+| mysql              |
+| performance_schema |
+| student_db         |
++--------------------+
+6 rows in set (0.14 sec)
+
+mysql> use java;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| java       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table student(
+    -> id int,
+    -> name varchar(100),
+    -> age int,
+    -> branch varchar(30),
+    -> bod int
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_java |
++----------------+
+| student        |
++----------------+
+1 row in set (0.05 sec)
+
+mysql> describe table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> insert into student
+    -> values(01,"soujanya",19,"CS",13/07),
+    -> (02,"ammulu",19,"CS",14/08),
+    -> (03,"prathyusha",19,"CS",18/04)
+    -> ,
+    -> (04,"anjuna",19,"CS",16/09);
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++------+------------+------+--------+------+
+| id   | name       | age  | branch | bod  |
++------+------------+------+--------+------+
+|    1 | soujanya   |   19 | CS     |    2 |
+|    2 | ammulu     |   19 | CS     |    2 |
+|    3 | prathyusha |   19 | CS     |    5 |
+|    4 | anjuna     |   19 | CS     |    2 |
++------+------------+------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> update student
+    -> set age = 20
+    -> where id =2;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++------+------------+------+--------+------+
+| id   | name       | age  | branch | bod  |
++------+------------+------+--------+------+
+|    1 | soujanya   |   19 | CS     |    2 |
+|    2 | ammulu     |   20 | CS     |    2 |
+|    3 | prathyusha |   19 | CS     |    5 |
+|    4 | anjuna     |   19 | CS     |    2 |
++------+------------+------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> delect from student
+    -> where id=2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delect from student
+where id=2' at line 1
+mysql> delect from student
+    -> where id = 2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delect from student
+where id = 2' at line 1
+mysql> delect from student
+    -> where id = 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delect from student
+where id = 1' at line 1
+mysql> after table student
+    -> add phone varchar(15);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'after table student
+add phone varchar(15)' at line 1
+mysql>
